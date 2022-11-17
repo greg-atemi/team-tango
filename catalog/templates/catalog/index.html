@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>HOMEPAGE</h1>
+    <p>Total Books: {{ num_books }}</p>
+    <p>Number Available: {{ num_instances_available }}</p>
+
+    {% if user.is_authenticated %}
+        <p> You are Logged in </p>
+        <p> Welcome: {{ user.get_username }} </p>
+        <a href="{% url 'logout' %}?next={{ request.path }}">LOGOUT</a>
+    {% else %}
+        <p> You are not Logged in </p>
+        <a href="{% url 'login' %}?next={{ request.path }}">LOGIN</a>
+    {% endif %}
+    <br>
+    <br>
+    <a href="book_list"> BOOK LIST </a>
+
+</body>
+</html>
